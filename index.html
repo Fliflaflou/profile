@@ -5,30 +5,74 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flanflan</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-  <h1>Flanflan, fun resume</h1>
-  <div class="img_bloc">
-    <img src="/profile/img/img_1.jpg" alt="beautiful guy" srcset="">
+  <div class="container">
+    <div class="circle"></div>
+
+    <div class="box">
+      <div class="content">
+          <h2>Flo</h2>
+          <div class="discover"><a href="#" id="action"> Click me !</a></div>
+          <div class="active"><p>Boire du café empêche de dormir. Par contre, dormir empêche de boire du café</p></div>
+            <div class="social">
+              <ul>
+                <li>
+                  <a href="#">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+               </li>
+               <li>
+                  <a href="#">
+                   <i class="fab fa-linkedin-in"></i>
+                 </a>
+               </li>
+                <li>
+                 <a href="#">
+                  <i class="fab fa-twitter"></i>
+                 </a>
+                </li>
+              </ul>
+            </div>
+      </div>
   </div>
-  <div class="social">
-    <ul>
-      <li>
-        <a href="#">
-          <i class="fab fa-facebook-f"></i> Facebook
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fab fa-linkedin-in"></i> Linkedin
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fab fa-twitter"></i> Twitter
-        </a>
-      </li>
-    </ul>
+    <!-- <h1>Flanflan, fun resume</h1>
+    <div class="img_bloc">
+      <img src="/img/img_1.jpg" alt="beautiful guy" srcset="">
+    </div> -->
   </div>
+  <script>
+   var animation = anime({
+  targets: ['.social ul li a','.box .content p'],
+  autoplay: false,
+  translateY: -40,
+  opacity: 1,
+  delay: anime.stagger(400) // increase delay by 100ms for each elements.
+  });
+  document.querySelector('#action').onclick = animation.play;
+  </script>
+  <!-- var animation = anime({
+    targets: '.play-pause-demo .el',
+    translateX: 270,
+    delay: function(el, i) { return i * 100; },
+    direction: 'alternate',
+    loop: true,
+    autoplay: false,
+    easing: 'easeInOutSine'
+  });
+
+  document.querySelector('.play-pause-demo .pause').onclick = animation.pause; -->
+  <svg>
+    <filter id="wavy">
+        <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="2">
+            <animate attributeName="baseFrequency" dur="60s" values="0.02;0.005;0.02" repeatCount="indefinite"></animate>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="30">
+    </filter>
+</svg>
 </body>
 </html>
