@@ -4,75 +4,61 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flanflan</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" referrerpolicy="no-referrer"></script>
+  <title>Flanflan</title>
 </head>
 <body>
-  <div class="container">
-    <div class="circle"></div>
+  <div class="content">
 
-    <div class="box">
-      <div class="content">
-          <h2>Flo</h2>
-          <div class="discover"><a href="#" id="action"> Click me !</a></div>
-          <div class="active"><p>Boire du café empêche de dormir. Par contre, dormir empêche de boire du café</p></div>
-            <div class="social">
-              <ul>
-                <li>
-                  <a href="#">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-               </li>
-               <li>
-                  <a href="#">
-                   <i class="fab fa-linkedin-in"></i>
-                 </a>
-               </li>
-                <li>
-                 <a href="#">
-                  <i class="fab fa-twitter"></i>
-                 </a>
-                </li>
-              </ul>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="container flip-card-front">
+          <div class="head">
+            <div class="img_div">
+              <img src="img/img_1.jpg" alt="">
             </div>
+            <h1>Florent Romano</h1>
+            <a href="" class="pseudo">Flanflan</a>
+          </div>
+          <div class="explication">
+            <p>Lorem ipsum dolor, consectetur adipisicing elit so, consetetur sadipscing elit, sed diam nonumy, vel magna al.</p>
+            <ul class="socials">
+              <li><a href="#"><img src="img/facebook.svg" alt=""></a></li>
+              <li><a href="#"><img src="img/github.svg" alt=""></a></li>
+              <li><a href="#"><img src="img/twitter.svg" alt=""></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="container flip-card-back">
+          <button class="btn" id="action"><a>About me</a></button>
+        </div>
       </div>
+    </div>
   </div>
-    <!-- <h1>Flanflan, fun resume</h1>
-    <div class="img_bloc">
-      <img src="/img/img_1.jpg" alt="beautiful guy" srcset="">
-    </div> -->
-  </div>
+  </body>
   <script>
-   var animation = anime({
-  targets: ['.social ul li a','.box .content p'],
-  autoplay: false,
-  translateY: -40,
-  opacity: 1,
-  delay: anime.stagger(400) // increase delay by 100ms for each elements.
-  });
-  document.querySelector('#action').onclick = animation.play;
-  </script>
-  <!-- var animation = anime({
-    targets: '.play-pause-demo .el',
-    translateX: 270,
-    delay: function(el, i) { return i * 100; },
-    direction: 'alternate',
-    loop: true,
-    autoplay: false,
-    easing: 'easeInOutSine'
-  });
+   var animation = anime.timeline({
+  targets: '.flip-card .flip-card-inner',
+  rotateY: 0,
+  autoplay: false
+});
 
-  document.querySelector('.play-pause-demo .pause').onclick = animation.pause; -->
-  <svg>
-    <filter id="wavy">
-        <feTurbulence x="0" y="0" baseFrequency="0.009" numOctaves="5" seed="2">
-            <animate attributeName="baseFrequency" dur="60s" values="0.02;0.005;0.02" repeatCount="indefinite"></animate>
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" scale="30">
-    </filter>
-</svg>
-</body>
-</html>
+animation
+.add({
+  targets: '.socials',
+  opacity: [0, 1],
+  delay: 1000
+});
+
+anime({
+  targets: '.flip-card .flip-card-inner',
+  rotateY: 180,
+  autoplay: true
+});
+
+document.querySelector('#action').onclick = animation.play;
+document.querySelector('.content').onclick = animation.reverse;
+  </script>
+  </html>
